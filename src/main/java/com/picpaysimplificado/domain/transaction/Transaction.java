@@ -4,16 +4,17 @@ import com.picpaysimplificado.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = "transacions")
+@Table(name = "transactions")
 @Entity(name = "transactions")
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Transaction {
 
     @Id
