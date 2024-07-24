@@ -4,7 +4,7 @@ import com.picpaysimplificado.domain.transaction.Transaction;
 import com.picpaysimplificado.domain.user.User;
 import com.picpaysimplificado.dtos.TransactionDTO;
 import com.picpaysimplificado.repositories.TransactionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,19 +15,16 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class TransactionService {
-
-    @Autowired
-    private TransactionRepository transactionRepository;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private NotificationService notificationService;
+    
+    private final TransactionRepository transactionRepository;
+    
+    private final UserService userService;
+    
+    private final RestTemplate restTemplate;
+    
+    private final NotificationService notificationService;
 
     public Transaction createTransaction(TransactionDTO transaction) throws Exception {
         User sender = this.userService.findUserById(transaction.senderId());
